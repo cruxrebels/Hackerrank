@@ -43,3 +43,70 @@ We must delete  characters to make both strings anagrams, so we print 4 on a new
 https://www.hackerrank.com/challenges/ctci-making-anagrams
 */
 
+#include <map>
+#include <set>
+#include <list>
+#include <cmath>
+#include <ctime>
+#include <deque>
+#include <queue>
+#include <stack>
+#include <string>
+#include <bitset>
+#include <cstdio>
+#include <limits>
+#include <vector>
+#include <climits>
+#include <cstring>
+#include <cstdlib>
+#include <fstream>
+#include <numeric>
+#include <sstream>
+#include <iostream>
+#include <algorithm>
+#include <unordered_map>
+
+using namespace std;
+
+int number_needed(string a, string b) {
+    //unordered_map<char, int> mapA;
+    //unordered_map<char, int> mapB;
+    auto sizeA = a.size(), sizeB = b.size();
+    auto larger = sizeA >= sizeB ? sizeA : sizeB;
+    int delCount = 0;
+    vector<int> freq(26);
+    for (auto i = 0; i<larger; ++i) {
+        if (i < sizeA)
+            ++freq[a[i] - 'a'];
+        if (i < sizeB)
+            --freq[b[i] - 'a'];
+    }
+    for_each(freq.begin(), freq.end(), [&] (int n) {
+        delCount += abs(n);
+    });
+    /*for (auto i = 0; i<larger; ++i) {
+        if (i < sizeA) 
+            ++mapA[a[i]];
+        if (i < sizeB)
+            ++mapB[b[i]];
+    }
+    
+    for (char i = 'a'; i<='z'; ++i) {
+        if (mapA.count(i)>0 && mapB.count(i)>0) 
+            delCount += abs(mapA[i] - mapB[i]);
+        else if (mapA.count(i) == 0 && mapB.count(i) > 0)
+            delCount += mapB.count(i);
+        else if (mapB.count(i) == 0 && mapA.count(i) > 0)
+            delCount += mapA.count(i);
+    }*/
+    return delCount;
+}
+
+int main(){
+    string a;
+    cin >> a;
+    string b;
+    cin >> b;
+    cout << number_needed(a, b) << endl;
+    return 0;
+}
