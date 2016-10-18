@@ -32,3 +32,37 @@ Thus, we print the array's final state as a single line of space-separated value
 
 https://www.hackerrank.com/challenges/linkedin-practice-array-left-rotation
 */
+
+#include <cmath>
+#include <cstdio>
+#include <vector>
+#include <iostream>
+#include <algorithm>
+using namespace std;
+
+void print(const vector<int>& input) {
+    for (const auto& i : input)
+        cout << i << " ";
+}
+int main() {
+    /* Enter your code here. Read input from STDIN. Print output to STDOUT */   
+    int n = 0, k = 0;
+    cin >> n >> k;
+    vector<int> input;
+    while (n--) {
+        int i = 0;
+        cin >> i;
+        input.emplace_back(i);
+    }
+    
+    k %= input.size(); 
+    if (k == 0)
+        print(input);
+    else {
+        for (int i = k; i<input.size(); ++i)
+            cout << input[i] << " ";
+        for (int j = 0; j<k; ++j)
+            cout << input[j] << " ";
+    }
+    return 0;
+}
