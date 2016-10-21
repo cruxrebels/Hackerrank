@@ -40,3 +40,32 @@ Per the library's fee structure, we know that our fine will be . We then print t
 https://www.hackerrank.com/challenges/linkedin-practice-nested-logic
 */
 
+#include <cmath>
+#include <cstdio>
+#include <vector>
+#include <iostream>
+#include <algorithm>
+using namespace std;
+
+
+int main() {
+    /* Enter your code here. Read input from STDIN. Print output to STDOUT */   
+    int De = 0, Da = 0, Me = 0, Ma = 0, Ye = 0, Ya = 0;
+    cin >> Da >> Ma >> Ya >> De >> Me >> Ye;
+    
+    int fine = 0;
+    if (Ya == Ye) {
+        if (Me == Ma) {
+            if (Da <= De)
+                ;               // Do nothing
+            else
+                fine = 15*(Da - De);
+        }
+        else if (Ma > Me)
+            fine = 500*(Ma - Me);
+    }
+    else if (Ya > Ye)
+        fine = 10000;
+    cout << fine;
+    return 0;
+}
