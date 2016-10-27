@@ -56,3 +56,31 @@ Harry is one of the keys in our dictionary, so we print harry=12299933.
 https://www.hackerrank.com/challenges/linkedin-practice-dictionaries-and-maps
 */
 
+#include <cmath>
+#include <cstdio>
+#include <vector>
+#include <unordered_map>
+#include <iostream>
+#include <algorithm>
+using namespace std;
+
+
+int main() {
+    /* Enter your code here. Read input from STDIN. Print output to STDOUT */   
+    int n = 0;
+    cin >> n;
+    unordered_map<string, int> phonebook;
+    while (n--) {
+        string name = ""; int number = 0;
+        cin >> name >> number;
+        phonebook[name] = number;
+    }
+    string query = "";
+    while (cin >> query) {
+        if (phonebook.find(query) == phonebook.end())
+            cout << "Not found\n";
+        else
+            cout << query << "=" << phonebook[query] << "\n";
+    }
+    return 0;
+}
